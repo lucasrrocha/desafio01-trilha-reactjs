@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import '../styles/tasklist.scss'
 
@@ -14,13 +14,10 @@ export function TaskList() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTaskTitle, setNewTaskTitle] = useState('');
 
-  useEffect(() => {
-    console.log(tasks)
-  }, [tasks])
-
   function handleCreateNewTask() {
     // Crie uma nova task com um id random, não permita criar caso o título seja vazio.
     if(newTaskTitle === "") {
+      alert('Por favor digite um titulo para a tarefa!')
       return;
     }
     setTasks([...tasks, {id: Math.floor(Math.random() * 100 + 1), title: newTaskTitle, isComplete: false}])
